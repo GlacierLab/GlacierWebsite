@@ -6,4 +6,4 @@
 
 
 ## 移动化 Migrate To Mobile
-[枝江往事-AStoryInZhiJiang](https://github.com/GlacierLab/ZhiJiang_Mobile)   [网站制作中](https://)  
+[枝江往事-AStoryInZhiJiang](https://github.com/GlacierLab/ZhiJiang_Mobile)   [独立网站 Dedicate Website](https://zhijiang.qinlili.bid/)  
