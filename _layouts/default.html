@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: " en-US" }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#DFAEFF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 8px;
+            background: transparent;
+            z-index: 12;
+            overflow: visible;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            width: 10px;
+            background-color: #DFAEFF;
+            z-index: 12;
+            border: 3px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            transition: background-color .32s ease-in-out;
+            margin: 4px;
+            min-height: 32px;
+            min-width: 32px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DFAEFF;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #202020;
+        }
+
+        body {
+            max-width: 1012px;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+    </style>
+
+    {% seo %}
+    <link rel="stylesheet" href="{{ " /assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+</head>
+
+<body>
+    <div class="container-lg px-3 my-5 markdown-body">
+        {{ content }}
+    </div>
+    <h4>广告让我们能保持免费 Ads can keep everything we produced free.</h4>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1806614386308377"
+        crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-1806614386308377"
+        data-ad-slot="6555030757"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+
+</html>
