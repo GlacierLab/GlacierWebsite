@@ -1,0 +1,449 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <script src="../../jslib/EphedrineSDK.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DengXian", "Microsoft YaHei";
+            user-select: none;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            border: 1px solid black;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .Btn {
+            transition: background-color 0.25s;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            position: absolute;
+            z-index: 10;
+            top: 0.5px;
+        }
+
+        #closeBtn {
+            right: 1px;
+        }
+
+        #bugBtn {
+            right: 33px;
+        }
+
+        #setBtn,
+        #backBtn {
+            right: 65px;
+        }
+
+        #backBtn {
+            display: none;
+        }
+
+        #closeBtn:hover {
+            background-color: indianred !important;
+        }
+
+        #closeBtn:active {
+            background-color: red !important;
+        }
+
+        .Btn:hover {
+            background-color: wheat;
+        }
+
+        .Btn:active {
+            background-color: orange;
+        }
+
+        #title {
+            -webkit-app-region: drag;
+            line-height: 24px;
+            padding: 4px;
+            font-size: 24px;
+        }
+
+        .page {
+            padding: 10px;
+            bottom: 0px;
+            top: 32px;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+        }
+
+        #setPage,
+        #agreePage {
+            display: none;
+        }
+
+        .setItem {
+            margin: 0px;
+        }
+
+        #bg {
+            z-index: -10;
+            background-image: url('.1/Setup.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.3;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <style>
+        .toggle {
+            transform: scale(0.5);
+            display: table;
+            -webkit-tap-highlight-color: transparent;
+            margin-bottom: 0rem;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .toggle input:focus+div {
+            text-decoration: underline;
+        }
+
+        .toggle>div {
+            cursor: pointer;
+            border-radius: 2rem;
+            width: 5rem;
+            height: 2rem;
+            background: white;
+            border: 2px solid black;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+            -webkit-transition: 200ms ease-out;
+            transition: 200ms ease-out;
+            font-size: 0;
+        }
+
+        .toggle>div:hover {
+            box-shadow: 0 0 6px #005ca4;
+        }
+
+        .toggle>div:before {
+            will-change: translate;
+            display: block;
+            position: absolute;
+            top: calc(50% - .5rem);
+            left: .5rem;
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            background: black;
+            border-radius: 50%;
+            -webkit-transition: 200ms;
+            transition: 200ms;
+        }
+
+        .toggle>div:after {
+            font-size: 1.5rem;
+            position: absolute;
+            right: -75%;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            content: attr(data-off);
+            pointer-events: none;
+        }
+
+        .toggle input:checked+div {
+            background: #0078d7;
+            border-color: #0078d7;
+        }
+
+        .toggle input:checked+div:before {
+            color: #0078d7;
+            -webkit-transform: translateX(280%);
+            transform: translateX(280%);
+            -webkit-transform: translateX(calc(2.5*100% + 4px));
+            transform: translateX(calc(2.5*100% + 4px));
+            background: white;
+        }
+
+        .toggle input:checked+div:after {
+            content: attr(data-on);
+        }
+
+        input:focus+div:after {
+            text-decoration: underline;
+        }
+    </style>
+    <style>
+        /*   start Button CSS    */
+
+        button:disabled,
+        button:disabled:hover,
+        button:disabled:active,
+        input[type=button]:disabled,
+        input[type=button]:disabled:hover,
+        input[type=button]:disabled:active {
+            background-color: rgb(204, 204, 204);
+            /*197,197,197*/
+            -webkit-box-shadow: 0px 0px 0px 1px rgb(204, 204, 204),
+                0px 0px 0px 2px rgb(173, 173, 173);
+            box-shadow: 0px 0px 0px 1px rgb(204, 204, 204),
+                0px 0px 0px 2px rgb(173, 173, 173);
+            color: rgb(135, 135, 135);
+        }
+
+        button,
+        input[type=button] {
+            outline: none;
+            -webkit-transition: background-color .5s, -webkit-box-shadow .5s;
+            transition: background-color .5s, -webkit-box-shadow .5s;
+            -o-transition: box-shadow .5s, background-color .5s;
+            transition: box-shadow .5s, background-color .5s;
+            transition: box-shadow .5s, background-color .5s, -webkit-box-shadow .5s;
+            font-family: sans-serif;
+            font-size: 13px;
+            background-color: rgb(225, 225, 225);
+            padding: 3px 10px;
+            margin: 2px;
+            border: 0;
+            -webkit-box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(173, 173, 173);
+            box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(173, 173, 173);
+            border: 1px dotted transparent;
+            color: black;
+        }
+
+        button:focus,
+        input[type=button]:focus {
+
+            background-color: rgb(225, 225, 225);
+            -webkit-box-shadow: 0px 0px 0px 0px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+            box-shadow: 0px 0px 0px 0px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+            border: 1px dotted rgb(17, 17, 17);
+        }
+
+        button:hover,
+        input[type=button]:hover {
+            -webkit-box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+            box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+            background-color: rgb(229, 241, 251);
+        }
+
+        button:active,
+        input[type=button]:active {
+            -webkit-transition: background-color 0s;
+            -o-transition: background-color 0s;
+            transition: background-color 0s;
+            background-color: rgb(204, 228, 247);
+            -webkit-box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+            box-shadow: 0px 0px 0px 1px rgb(225, 225, 225),
+                0px 0px 0px 2px rgb(0, 120, 215);
+        }
+
+        /*    end Button CSS     */
+    </style>
+</head>
+
+<body>
+    <img id="bg">
+    <div id="title">红楼续梦-安装</div>
+    <svg id="closeBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+        onclick="Ephedrine.Actions.Exit()">
+        <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+        <path d="M6 6L15 15M42 42L33 33" stroke="#333" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        <path d="M42 6L33 15M6 42L15 33" stroke="#333" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        <circle cx="24" cy="24" r="5" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+    </svg>
+    <svg id="bugBtn" class="Btn" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
+        onclick="Ephedrine.Actions.Run('https://github.com/GlacierLab/GlacierWebsite/issues',null,null,true)">
+        <g>
+            <rect width="48" height="48" fill="white" fill-opacity="0.01" stroke-linejoin="round" stroke-width="4"
+                stroke="none" fill-rule="evenodd" />
+            <g transform="translate(4.000000, 4.000000)">
+                <path
+                    d="M20,38 C32,38 34,27.5323633 34,24 C34,20.837862 34,16.1711953 34,10 L6,10 C6,13.442296 6,18.1089627 6,24 C6,27.450596 8,38 20,38 Z"
+                    stroke="#333" fill="none" fill-rule="nonzero" stroke-linejoin="round" stroke-width="4" />
+                <path d="M3.55271368e-15,4 L6,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="4" fill="none" fill-rule="evenodd" />
+                <path d="M40,4 L34,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path d="M0,23 L6,23" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path d="M40,23 L34,23" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path d="M3,40 L9,34" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path d="M37,40 L31,34" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path d="M20,38 L20,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
+                    fill="none" fill-rule="evenodd" />
+                <path
+                    d="M10.920475,35.0408965 C13.002464,36.7831828 15.9245088,38 20,38 L20,38 C24.1112534,38 27.0487287,36.7713317 29.1341392,35.0138386"
+                    stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" fill="none"
+                    fill-rule="evenodd" />
+                <path
+                    d="M28,8.33333333 C28,3.73096042 24.418278,0 20,0 C15.581722,0 12,3.73096042 12,8.33333333 L12,10 L28,10 L28,8.33333333 Z"
+                    stroke="#333" fill="none" fill-rule="nonzero" stroke-linejoin="round" stroke-width="4" />
+            </g>
+        </g>
+    </svg>
+    <svg id="setBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="showSet()">
+        <rect width="48" height="48" fill="white" fill-opacity="0.01" />
+        <path d="M34.0003 41L44 24L34.0003 7H14.0002L4 24L14.0002 41H34.0003Z" fill="none" stroke="#333"
+            stroke-width="4" stroke-linejoin="round" />
+        <path
+            d="M24 29C26.7614 29 29 26.7614 29 24C29 21.2386 26.7614 19 24 19C21.2386 19 19 21.2386 19 24C19 26.7614 21.2386 29 24 29Z"
+            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
+    </svg>
+    <svg id="backBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+        onclick="hideSet()">
+        <path d="M12.9998 8L6 14L12.9998 21" stroke="#333" stroke-width="4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        <path d="M6 14H28.9938C35.8768 14 41.7221 19.6204 41.9904 26.5C42.2739 33.7696 36.2671 40 28.9938 40H11.9984"
+            stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <div id="homePage" class="page">
+
+    </div>
+    <div id="setPage" class="page">
+        <p class="setItem">下次自动启动游戏（若已安装）</p>
+        <label class="toggle">
+            <input type="checkbox" onclick="toggle(this,event)" key="autoStart" />
+            <div data-off="禁用" data-on="启用"></div>
+        </label>
+        <p class="setItem">关闭广告显示</p>
+        <label class="toggle">
+            <input type="checkbox" onclick="toggle(this,event)" key="disableAds" />
+            <div data-off="禁用" data-on="启用"></div>
+        </label>
+        <p class="setItem">使用外部下载器下载文件</p>
+        <label class="toggle">
+            <input type="checkbox" onclick="toggle(this,event)" key="useDownloader" />
+            <div data-off="禁用" data-on="启用"></div>
+        </label>
+        <br>
+        <button onclick="clearCache()">
+            清除启动器缓存
+        </button>
+        <br>
+        <br>
+        <a href="javascript:" onclick="showAgree()">用户协议</a>
+    </div>
+    <div id="agreePage" class="page">
+        <span>
+            更新于2022年7月5日<br>
+            你可以做的事情：随意使用/修改/分发本启动器<br>
+            你不可以做的事情：在分发本启动器时收费<br>
+            琴梨梨的责任：无<br>
+            需要的权限：存储空间，网络连接，安装程序<br>
+            需要收集的数据：硬件型号（不包括序列号），网络信息，安装日志
+        </span>
+        <br>
+        <button style="position:absolute;right:10px;bottom:10px;" onclick="agree()">同意</button>
+    </div>
+    <script>
+        const toggle = (input, event) => {
+            localStorage[input.getAttribute("key")] = input.checked;
+        };
+        const clearCache = () => {
+            caches.keys().then(function (names) {
+                for (let name of names)
+                    caches.delete(name);
+            });
+            location.reload();
+        };
+        const agree = () => {
+            localStorage.agree = true;
+            document.getElementById("setBtn").style.display = "block";
+            document.getElementById("agreePage").style.display = "none";
+            document.getElementById("homePage").style.display = "block";
+            document.getElementById("title").innerText = "红楼续梦-安装";
+        };
+        const showAgree = () => {
+            document.getElementById("setBtn").style.display = "none";
+            document.getElementById("backBtn").style.display = "none";
+            document.getElementById("agreePage").style.display = "block";
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("setPage").style.display = "none";
+            document.getElementById("title").innerText = "用户协议";
+        }
+        (() => {
+            [].forEach.call(document.querySelectorAll(".toggle input"), input => {
+                input.checked = localStorage[input.getAttribute("key")] ? JSON.parse(localStorage[input.getAttribute("key")]) : false;
+            })
+        })()
+        const showSet = () => {
+            document.getElementById("backBtn").style.display = "block";
+            document.getElementById("setBtn").style.display = "none";
+            document.getElementById("setPage").style.display = "block";
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("title").innerText = "设置";
+        };
+        const hideSet = () => {
+            document.getElementById("setBtn").style.display = "block";
+            document.getElementById("backBtn").style.display = "none";
+            document.getElementById("homePage").style.display = "block";
+            document.getElementById("setPage").style.display = "none";
+            document.getElementById("title").innerText = "红楼续梦-安装";
+
+        };
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        (async () => {
+            if (Ephedrine.Ready) {
+                if (localStorage.agree ? false : true) {
+                    showAgree();
+                }
+                console.log("Ephedrine SDK Ready!");
+                if (!navigator.serviceWorker.controller) {
+                    console.log("Register Service Worker...")
+                    //await navigator.serviceWorker.register('./sw.js', { scope: '/EphedrineWeb/VM/HLXM/' });
+                };
+                let VBInstall = await Ephedrine.Actions.Verify("MD5", localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe");
+                switch (VBInstall.code) {
+                    case 81: {
+                        if (VBInstall.result == "AE2DCE814BB0D52A3DFB598166390D3D") {
+                            console.log("VBox 5.2.44 Found.");
+                        } else {
+                            console.log("Another VBox Version Found.");
+                        }
+                        break;
+                    };
+                    case 80:
+                    default: {
+                        console.log("VBox Not Installed.");
+                        break;
+                    }
+                }
+            } else {
+                //document.body.innerHTML = "";
+                alert("你不应该直接在浏览器内访问这个地址！");
+            }
+        })() 
+    </script>
+</body>
+
+</html>
