@@ -24,6 +24,7 @@
 |  ----  | ----  |
 |镜像大小|1.70G  |
 |镜像SHA256|0efb9bbfb88607f65a1a05758ec54beb8b68315d832c7b4b5dd2dd83d1535430|
+
 </details>
 
 ## 镜像下载
@@ -36,4 +37,5 @@ Ephedrine安装助手：开发中
 [Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20220630.7z)  
 [城通](http://share.qinlili.bid/f/8067059-605678554-35b789?p=547873715)密码：547873715，可使用[解析器](https://ctfile.qinlili.bid)  
 [天翼](https://cloud.189.cn/web/share?code=rYruMz6VzMB3)访问码：eip2
+
 </details>
