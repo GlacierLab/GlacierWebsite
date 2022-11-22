@@ -1,4 +1,28 @@
 {
     "success": true,
-    "latest": "20220630"
+    "latest": {
+        "vbox": {
+            "key": "vbox",
+            "name": "Virtual Box",
+            "vcode": 1,
+            "version": "5.2.44",
+            "url": "https://download.virtualbox.org/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe"
+        },
+        "image": {
+            "key": "image",
+            "name": "红楼续梦 XP镜像",
+            "vcode": 2,
+            "version": "20221121",
+            "url": "https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20221121.7z",
+            "sha256": "7A07324E51FEE11446315E6D70BD7ADEA8FC760B995B21F6578BF9D6200B871E",
+            "log": "进一步精简体积，修复弹激活问题",
+            "history": [
+                {
+                    "vcode": 1,
+                    "version": "20220630",
+                    "log": "首个版本"
+                }
+            ]
+        }
+    }
 }

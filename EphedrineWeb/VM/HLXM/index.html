@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="noindex">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <script src="../../jslib/EphedrineSDK.min.js"></script>
     <style>
@@ -37,13 +38,17 @@
             right: 1px;
         }
 
-        #bugBtn {
+        #minimizeBtn {
             right: 33px;
+        }
+
+        #bugBtn {
+            right: 65px;
         }
 
         #setBtn,
         #backBtn {
-            right: 65px;
+            right: 97px;
         }
 
         #backBtn {
@@ -59,11 +64,11 @@
         }
 
         .Btn:hover {
-            background-color: wheat;
+            background-color: greenyellow;
         }
 
         .Btn:active {
-            background-color: orange;
+            background-color: green;
         }
 
         #title {
@@ -93,7 +98,7 @@
 
         #bg {
             z-index: -10;
-            background-image: url('.1/Setup.webp');
+            background-image: url('./Setup.webp');
             background-repeat: no-repeat;
             background-size: cover;
             opacity: 0.3;
@@ -103,8 +108,69 @@
             width: 100%;
             height: 100%;
         }
-    </style>
-    <style>
+
+        .installPanel {
+            margin: 10px;
+            padding: 10px;
+            position: relative;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .installProgress {
+            transition: width 0.2s;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            bottom: 0px;
+            height: 100%;
+            width: 0%;
+            z-index: -1;
+            background-color: rgba(0, 255, 251, 0.75);
+        }
+
+        .installTitle {
+            margin: 4px;
+        }
+
+        .installStatus {
+            margin: 4px;
+        }
+
+        .btnPanel {
+            padding: 4px;
+            display: flex;
+            flex-direction: row;
+            width: auto;
+            right: 16px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            border-radius: 4px;
+            position: absolute;
+            background: rgba(200, 200, 200, 0.75);
+            height: 40px;
+            min-width: 40px;
+        }
+
+        .installBtn {
+            padding: 4px;
+            transition: background-color 0.25s, border-radius 0.25s;
+            border-radius: 0px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .installBtn:hover {
+            border-radius: 8px;
+            background-color: rgba(150, 150, 150, 0.75);
+        }
+
+        .installBtn:active {
+            border-radius: 16px;
+            background-color: rgba(100, 100, 100, 0.75);
+        }
+
         .toggle {
             transform: scale(0.5);
             display: table;
@@ -188,8 +254,7 @@
         input:focus+div:after {
             text-decoration: underline;
         }
-    </style>
-    <style>
+
         /*   start Button CSS    */
 
         button:disabled,
@@ -268,66 +333,61 @@
 <body>
     <img id="bg">
     <div id="title">红楼续梦-安装</div>
-    <svg id="closeBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+    <svg id="closeBtn" class="Btn" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
         onclick="Ephedrine.Actions.Exit()">
-        <rect width="48" height="48" fill="white" fill-opacity="0.01" />
-        <path d="M6 6L15 15M42 42L33 33" stroke="#333" stroke-width="4" stroke-linecap="round"
-            stroke-linejoin="round" />
-        <path d="M42 6L33 15M6 42L15 33" stroke="#333" stroke-width="4" stroke-linecap="round"
-            stroke-linejoin="round" />
-        <circle cx="24" cy="24" r="5" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"
-            stroke-linejoin="round" />
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
     </svg>
-    <svg id="bugBtn" class="Btn" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
+    <svg id="minimizeBtn" class="Btn" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
+        onclick="Ephedrine.Actions.Minimize()">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M6 19h12v2H6z" />
+    </svg>
+    <svg id="bugBtn" class="Btn" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
         onclick="Ephedrine.Actions.Run('https://github.com/GlacierLab/GlacierWebsite/issues',null,null,true)">
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path
+            d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z" />
+    </svg>
+    <svg id="setBtn" class="Btn" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24"
+        viewBox="0 0 24 24" width="24" onclick="showSet()">
         <g>
-            <rect width="48" height="48" fill="white" fill-opacity="0.01" stroke-linejoin="round" stroke-width="4"
-                stroke="none" fill-rule="evenodd" />
-            <g transform="translate(4.000000, 4.000000)">
-                <path
-                    d="M20,38 C32,38 34,27.5323633 34,24 C34,20.837862 34,16.1711953 34,10 L6,10 C6,13.442296 6,18.1089627 6,24 C6,27.450596 8,38 20,38 Z"
-                    stroke="#333" fill="none" fill-rule="nonzero" stroke-linejoin="round" stroke-width="4" />
-                <path d="M3.55271368e-15,4 L6,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round"
-                    stroke-width="4" fill="none" fill-rule="evenodd" />
-                <path d="M40,4 L34,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path d="M0,23 L6,23" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path d="M40,23 L34,23" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path d="M3,40 L9,34" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path d="M37,40 L31,34" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path d="M20,38 L20,10" stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"
-                    fill="none" fill-rule="evenodd" />
-                <path
-                    d="M10.920475,35.0408965 C13.002464,36.7831828 15.9245088,38 20,38 L20,38 C24.1112534,38 27.0487287,36.7713317 29.1341392,35.0138386"
-                    stroke="#333" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" fill="none"
-                    fill-rule="evenodd" />
-                <path
-                    d="M28,8.33333333 C28,3.73096042 24.418278,0 20,0 C15.581722,0 12,3.73096042 12,8.33333333 L12,10 L28,10 L28,8.33333333 Z"
-                    stroke="#333" fill="none" fill-rule="nonzero" stroke-linejoin="round" stroke-width="4" />
-            </g>
+            <path d="M0,0h24v24H0V0z" fill="none" />
+            <path
+                d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z" />
         </g>
     </svg>
-    <svg id="setBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" onclick="showSet()">
-        <rect width="48" height="48" fill="white" fill-opacity="0.01" />
-        <path d="M34.0003 41L44 24L34.0003 7H14.0002L4 24L14.0002 41H34.0003Z" fill="none" stroke="#333"
-            stroke-width="4" stroke-linejoin="round" />
-        <path
-            d="M24 29C26.7614 29 29 26.7614 29 24C29 21.2386 26.7614 19 24 19C21.2386 19 19 21.2386 19 24C19 26.7614 21.2386 29 24 29Z"
-            fill="none" stroke="#333" stroke-width="4" stroke-linejoin="round" />
-    </svg>
-    <svg id="backBtn" class="Btn" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+    <svg id="backBtn" class="Btn" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"
         onclick="hideSet()">
-        <path d="M12.9998 8L6 14L12.9998 21" stroke="#333" stroke-width="4" stroke-linecap="round"
-            stroke-linejoin="round" />
-        <path d="M6 14H28.9938C35.8768 14 41.7221 19.6204 41.9904 26.5C42.2739 33.7696 36.2671 40 28.9938 40H11.9984"
-            stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6zM6 6h2v12H6z" />
+        <path d="M24 24H0V0h24v24z" fill="none" />
     </svg>
     <div id="homePage" class="page">
-
+        <div class="installPanel" key="vbox">
+            <div class="installProgress"></div>
+            <div>
+                <H4 class="installTitle">Virtual Box</H4>
+                <H5 class="installStatus">正在加载...</H5>
+                <div class="btnPanel">
+                    <img class="installBtn" function="locate" src="../../icon/locate.svg">
+                    <img class="installBtn" function="download" src="../../icon/download.svg">
+                    <img class="installBtn" function="uninstall" src="../../icon/uninstall.svg">
+                </div>
+            </div>
+        </div>
+        <div class="installPanel" key="image">
+            <div class="installProgress"></div>
+            <div>
+                <H4 class="installTitle">虚拟机镜像</H4>
+                <H5 class="installStatus">正在加载...</H5>
+                <div class="btnPanel">
+                    <img class="installBtn" function="locate" src="../../icon/locate.svg">
+                    <img class="installBtn" function="download" src="../../icon/download.svg">
+                    <img class="installBtn" function="uninstall" src="../../icon/uninstall.svg">
+                </div>
+            </div>
+        </div>
     </div>
     <div id="setPage" class="page">
         <p class="setItem">下次自动启动游戏（若已安装）</p>
@@ -355,12 +415,12 @@
     </div>
     <div id="agreePage" class="page">
         <span>
-            更新于2022年7月5日<br>
+            更新于2022年11月22日<br>
             你可以做的事情：随意使用/修改/分发本启动器<br>
             你不可以做的事情：在分发本启动器时收费<br>
             琴梨梨的责任：无<br>
             需要的权限：存储空间，网络连接，安装程序<br>
-            需要收集的数据：硬件型号（不包括序列号），网络信息，安装日志
+            收集的数据：由谷歌广告收集的广告相关数据
         </span>
         <br>
         <button style="position:absolute;right:10px;bottom:10px;" onclick="agree()">同意</button>
@@ -422,24 +482,176 @@
                     console.log("Register Service Worker...")
                     //await navigator.serviceWorker.register('./sw.js', { scope: '/EphedrineWeb/VM/HLXM/' });
                 };
-                let VBInstall = await Ephedrine.Actions.Verify("MD5", localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe");
-                switch (VBInstall.code) {
-                    case 81: {
-                        if (VBInstall.result == "AE2DCE814BB0D52A3DFB598166390D3D") {
-                            console.log("VBox 5.2.44 Found.");
-                        } else {
-                            console.log("Another VBox Version Found.");
+                //Initialize Install Panel
+                window.installParts = {};
+                [].forEach.call(document.querySelectorAll(".installPanel"), panel => {
+                    installParts[panel.getAttribute("key")] = panel;
+                });
+                const detectVBox = async () => {
+                    let VBInstall = await Ephedrine.Actions.Verify("MD5", localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe");
+                    switch (VBInstall.code) {
+                        case 81: {
+                            if (VBInstall.result == "AE2DCE814BB0D52A3DFB598166390D3D") {
+                                console.log("VBox 5.2.44 Found.");
+                                installParts.vbox.querySelector(".installStatus").innerText = "已安装";
+                                installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                            } else {
+                                console.log("Another VBox Version Found.");
+                                installParts.vbox.querySelector(".installStatus").innerText = "已安装，但版本不受支持";
+                            }
+                            break;
+                        };
+                        case 80:
+                        default: {
+                            console.log("VBox Not Installed.");
+                            installParts.vbox.querySelector(".installStatus").innerText = "未安装";
+                            break;
                         }
-                        break;
+                    }
+                };
+                detectVBox();
+                installParts.vbox.querySelector("[function*=\"download\"]").onclick = async () => {
+                    if (window.currentInstall == "vbox") {
+                        return false;
+                    }
+                    window.currentInstall = "vbox";
+                    installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/loading.svg";
+                    Ephedrine.processProgress = percent => {
+                        installParts.vbox.querySelector(".installProgress").style.width = percent + "%";
+                        installParts.vbox.querySelector(".installStatus").innerText = "正在下载：" + percent + "%";
                     };
-                    case 80:
-                    default: {
-                        console.log("VBox Not Installed.");
-                        break;
+                    let install = await Ephedrine.Actions.Install.run("https://download.virtualbox.org/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe", "vbox.exe", true, "--silent --reinstall --ignore-reboot --msiparams REBOOT=\"ReallySuppress\" REBOOTPROMPT=\"ReallySuppress\" MSIRESTARTMANAGERCONTROL=\"DisableShutdown\"");
+                    switch (install.code) {
+                        case 16: {
+                            installParts.vbox.querySelector(".installStatus").innerText = "安装完成，建议重启电脑";
+                            installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg";
+                            break;
+                        };
+                        case 17: {
+                            installParts.vbox.querySelector(".installStatus").innerText = "权限不足，安装失败";
+                            installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                            break;
+                        };
+                        case 18: {
+                            installParts.vbox.querySelector(".installStatus").innerText = "安装包损坏，请检查网络后重试";
+                            installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                            break;
+                        };
+                    };
+                    delete window.currentInstall;
+                    installParts.vbox.querySelector(".installProgress").style.width = "0%";
+                };
+                installParts.vbox.querySelector("[function*=\"uninstall\"]").onclick = async () => {
+                    if (confirm("卸载VBox会导致游戏无法运行，确定要继续吗？")) {
+                        installParts.vbox.querySelector("[function*=\"uninstall\"]").src = "../../icon/loading.svg";
+                        let vboxpath = localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe";
+                        let uninstall = await Ephedrine.Actions.Run("wmic product where name=\"Oracle VM VirtualBox 5.2.44\" call uninstall", null, true, true);
+                        console.log(uninstall);
+                        installParts.vbox.querySelector("[function*=\"uninstall\"]").src = "../../icon/uninstall.svg";
+                    };
+                };
+                installParts.vbox.querySelector("[function*=\"locate\"]").onclick = async () => {
+                    let exe = await Ephedrine.Actions.Select(false);
+                    console.log(exe.result);
+                    if (exe.result.endsWith("VirtualBox.exe")) {
+                        localStorage.VBoxLocation = exe.result;
+                        installParts.vbox.querySelector(".installStatus").innerText = "已记录Virtual Box安装路径";
+                        installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                    } else {
+                        installParts.vbox.querySelector(".installStatus").innerText = "你选择的不是VirtualBox.exe";
                     }
                 }
+                //Image Install
+                let imagepath = localStorage.ImageLocation;
+                if (imagepath) {
+                    installParts.image.querySelector(".installStatus").innerText = "已安装，版本：" + localStorage.ImageVersion;
+                    installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                } else {
+                    installParts.image.querySelector(".installStatus").innerText = "未安装或未找到";
+                };
+                installParts.image.querySelector("[function*=\"locate\"]").onclick = async () => {
+                    let image = await Ephedrine.Actions.Select(false);
+                    console.log(image.result);
+                    if (image.result.endsWith("HLXM_WINXP.vdi")) {
+                        localStorage.ImageVersion = prompt("请输入镜像版本号");
+                        localStorage.ImageLocation = image.result;
+                        installParts.image.querySelector(".installStatus").innerText = "已记录镜像安装路径";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                    } else {
+                        installParts.image.querySelector(".installStatus").innerText = "你选择的不是HLXM_WINXP.vdi";
+                    };
+                };
+                installParts.image.querySelector("[function*=\"download\"]").onclick = async () => {
+                    const installImage = async () => {
+                        await sleep(250);
+                        installParts.image.querySelector(".installStatus").innerText = "选择安装目录";
+                        let installPath = await Ephedrine.Actions.Select(true);
+                        installParts.image.querySelector(".installStatus").innerText = "正在解压，请允许插件安装";
+                        await Ephedrine.Actions.Plugin("7Zip", "7za.exe", "x HLXM_WINXP.7z -y -o" + installPath.result, false, false)
+                        localStorage.ImageLocation = installPath.result + "\\HLXM_WINXP\\HLXM_WINXP.vdi";
+                        await sleep(5000);
+                        installParts.image.querySelector(".installStatus").innerText = "安装完成";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                    }
+                    if (window.currentInstall == "image") {
+                        return false;
+                    }
+                    window.currentInstall = "image";
+                    installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/loading.svg";
+                    installParts.image.querySelector(".installStatus").innerText = "正在检测更新";
+                    let version = await (await fetch("./version.json?ForceNoCache=1").catch(() => {
+                        installParts.image.querySelector(".installStatus").innerText = "检测更新失败，请检查网络后重试";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                        delete window.currentInstall;
+                    })).json().catch(() => {
+                        installParts.image.querySelector(".installStatus").innerText = "检测更新失败，请检查网络后重试";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                        delete window.currentInstall;
+                    });
+                    if (version.success) {
+                        console.log(version);
+                        installParts.image.querySelector(".installStatus").innerText = "正在检测安装进度";
+                        let filelist = await Ephedrine.Actions.List();
+                        if (filelist.result.find(file => { return file.Name == "HLXM_WINXP.7z" })) {
+                            installParts.image.querySelector(".installStatus").innerText = "正在校验镜像完整性";
+                            let hash = await Ephedrine.Actions.Verify("SHA256", "HLXM_WINXP.7z");
+                            if (hash.result == version.latest.image.sha256) {
+                                localStorage.ImageVersion = version.latest.image.version;
+                                return installImage()
+                            } else {
+                                installParts.image.querySelector(".installStatus").innerText = "镜像下载不完整！请检查网络后重试";
+                                installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                                delete window.currentInstall;
+                                return false;
+                            }
+                        }
+                        Ephedrine.processProgress = percent => {
+                            installParts.image.querySelector(".installProgress").style.width = percent + "%";
+                            installParts.image.querySelector(".installStatus").innerText = "版本" + version.latest.image.version + "正在下载：" + percent + "%";
+                        };
+                        let install = await Ephedrine.Actions.Install.save(version.latest.image.url, "HLXM_WINXP.7z");
+                        installParts.image.querySelector(".installStatus").innerText = "正在校验镜像完整性";
+                        let hash = await Ephedrine.Actions.Verify("SHA256", "HLXM_WINXP.7z");
+                        if (hash.result == version.latest.image.sha256) {
+                            localStorage.ImageVersion = version.latest.image.version;
+                            return installImage();
+                        } else {
+                            installParts.image.querySelector(".installStatus").innerText = "镜像下载不完整！请检查网络后重试";
+                            installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                            delete window.currentInstall;
+                            return false;
+                        }
+                        delete window.currentInstall;
+                        installParts.image.querySelector(".installProgress").style.width = "0%";
+                    } else {
+                        installParts.image.querySelector(".installStatus").innerText = "检测更新失败，请检查网络后重试";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                        delete window.currentInstall;
+                        return false;
+                    }
+                };
             } else {
-                //document.body.innerHTML = "";
+                document.body.innerHTML = "";
                 alert("你不应该直接在浏览器内访问这个地址！");
             }
         })() 
