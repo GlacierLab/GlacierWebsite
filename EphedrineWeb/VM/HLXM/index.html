@@ -719,10 +719,8 @@
                                 localStorage.ImageVersion = version.latest.image.version;
                                 return installImage()
                             } else {
-                                installParts.image.querySelector(".installStatus").innerText = "镜像下载不完整！请检查网络后重试";
-                                installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
-                                delete window.currentInstall;
-                                return false;
+                                installParts.image.querySelector(".installStatus").innerText = "镜像校验失败，正在重新下载";
+                                await Ephedrine.Actions.Delete("HLXM_WINXP.7z");
                             }
                         }
                         Ephedrine.processProgress = percent => {
