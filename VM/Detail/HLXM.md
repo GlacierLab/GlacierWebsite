@@ -27,10 +27,16 @@
   
 </details>
 
+## 更新日志
+#### 20221121
+- 修复了弹激活的问题  
+- 进一步精简体积  
+#### 20220630
+- 首个版本
+
 ## 镜像下载
 [Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20221121.7z)  
-
-Ephedrine安装助手：开发中
+[Ephedrine安装助手](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_Installer.exe)`推荐！全自动一键安装！`
 <details><summary>历史版本</summary>
   
 #### 20220630
