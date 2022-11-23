@@ -15,7 +15,7 @@ self.addEventListener('fetch', event => {
         event.respondWith(new Response(VERSION));
         return;
     }
-    if (event.request.method == "GET" && (event.request.url.indexOf("qinlili.bid") > 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
+    if (event.request.method == "GET" && (event.request.url.indexOf("qinlili.bid") > 0) && (event.request.url.indexOf("google") == -1) && (event.request.url.indexOf("ForceNoCache") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
