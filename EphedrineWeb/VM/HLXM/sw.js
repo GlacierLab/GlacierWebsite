@@ -1,5 +1,5 @@
 var APP_PREFIX = '红楼续梦'
-var VERSION = '20221122'
+var VERSION = '20221124'
 var VERSION_AZUSA_PATCH_USE = 'ForceUpdate'
 var AZUSA_PATCH_SKIP_LIST = []
 var CACHE_NAME = APP_PREFIX + VERSION
@@ -15,7 +15,7 @@ self.addEventListener('fetch', event => {
         event.respondWith(new Response(VERSION));
         return;
     }
-    if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
+    if (event.request.method == "GET" && (event.request.url.indexOf("qinlili.bid") > 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {

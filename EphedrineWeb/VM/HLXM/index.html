@@ -115,6 +115,7 @@
             position: relative;
             border-radius: 4px;
             background-color: rgba(255, 255, 255, 0.75);
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
         }
 
         .installProgress {
@@ -169,6 +170,48 @@
         .installBtn:active {
             border-radius: 16px;
             background-color: rgba(100, 100, 100, 0.75);
+        }
+
+        .launchPanel {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 4px;
+            box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        #launch {
+            margin: 4px;
+            transition: background-color 0.25s, border-radius 0.25s;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(200, 200, 200, 0.75);
+            display: flex;
+            flex-direction: row;
+        }
+
+
+        #launch:hover {
+            border-radius: 16px;
+            background-color: rgba(150, 150, 150, 0.75);
+        }
+
+        #launch:active {
+            border-radius: 32px;
+            background-color: rgba(100, 100, 100, 0.75);
+        }
+
+        #launchBtn {
+            line-height: 32px;
+            font-size: 24px;
+            margin: 4px;
+        }
+
+        #launchIcon {
+            height: 32px;
+            width: 32px;
+            margin: 4px;
         }
 
         .toggle {
@@ -327,6 +370,9 @@
         }
 
         /*    end Button CSS     */
+        p {
+            margin: 0px;
+        }
     </style>
 </head>
 
@@ -367,7 +413,7 @@
         <div class="installPanel" key="vbox">
             <div class="installProgress"></div>
             <div>
-                <H4 class="installTitle">Virtual Box</H4>
+                <H4 class="installTitle">Virtual Box(104M)</H4>
                 <H5 class="installStatus">正在加载...</H5>
                 <div class="btnPanel">
                     <img class="installBtn" function="locate" src="../../icon/locate.svg">
@@ -379,13 +425,35 @@
         <div class="installPanel" key="image">
             <div class="installProgress"></div>
             <div>
-                <H4 class="installTitle">虚拟机镜像</H4>
+                <H4 class="installTitle">虚拟机镜像(约2.5G)</H4>
                 <H5 class="installStatus">正在加载...</H5>
                 <div class="btnPanel">
                     <img class="installBtn" function="locate" src="../../icon/locate.svg">
                     <img class="installBtn" function="download" src="../../icon/download.svg">
                     <img class="installBtn" function="uninstall" src="../../icon/uninstall.svg">
                 </div>
+            </div>
+        </div>
+        <div class="adPanel" style="width:100%;height:150px;">
+            <script async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1806614386308377"
+                crossorigin="anonymous"></script>
+            <!-- HLXM -->
+            <ins class="adsbygoogle" style="display:inline-block;width:780px;height:150px"
+                data-ad-client="ca-pub-1806614386308377" data-ad-slot="7531869105"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div id="tips" style="position:absolute;height:56px;left:16px;bottom:16px;right:200px;">
+            <p>退出时选择"保存虚拟机状态"，下次游戏启动更快</p>
+            <p>首次安装完需要第二次启动才能进入游戏</p>
+            <p>若游戏卡顿，请检查是否在BIOS内开启虚拟化并关闭系统Hyper-V</p>
+        </div>
+        <div class="launchPanel">
+            <div id="launch">
+                <img id="launchIcon" src="../../icon/game.svg">
+                <p id="launchBtn">未准备就绪</p>
             </div>
         </div>
     </div>
@@ -397,12 +465,7 @@
         </label>
         <p class="setItem">关闭广告显示</p>
         <label class="toggle">
-            <input type="checkbox" onclick="toggle(this,event)" key="disableAds" />
-            <div data-off="禁用" data-on="启用"></div>
-        </label>
-        <p class="setItem">使用外部下载器下载文件</p>
-        <label class="toggle">
-            <input type="checkbox" onclick="toggle(this,event)" key="useDownloader" />
+            <input disabled type="checkbox" onclick="toggle(this,event)" key="disableAds" />
             <div data-off="禁用" data-on="启用"></div>
         </label>
         <br>
@@ -472,6 +535,32 @@
 
         };
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        let installed = {};
+        const addInstall = product => {
+            installed[product] = true;
+            if (installed.vbox && installed.image) {
+                document.getElementById("launchBtn").innerText = "启动游戏";
+                document.getElementById("launchBtn").onclick = async () => {
+                    document.getElementById("launchIcon").src = "../../icon/loading.svg";
+                    document.getElementById("launchBtn").innerText = "正在启动";
+                    setTimeout(() => {
+                        document.getElementById("launchIcon").src = "../../icon/game.svg";
+                        document.getElementById("launchBtn").innerText = "启动游戏";
+                    }, 2000);
+                    await Ephedrine.Actions.Run(localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe", localStorage.ImageLocation + "\\HLXM_WINXP.vbox");
+                    if (!localStorage.successStart) {
+                        let success = confirm("游戏启动成功了吗？");
+                        if (success) {
+                            await Ephedrine.Actions.Delete("HLXM_WINXP.7z");
+                            localStorage.successStart = true;
+                        }
+                    }
+                };
+                if (localStorage.autoStart == "true") {
+                    document.getElementById("launchBtn").click();
+                }
+            }
+        };
         (async () => {
             if (Ephedrine.Ready) {
                 if (localStorage.agree ? false : true) {
@@ -480,7 +569,7 @@
                 console.log("Ephedrine SDK Ready!");
                 if (!navigator.serviceWorker.controller) {
                     console.log("Register Service Worker...")
-                    //await navigator.serviceWorker.register('./sw.js', { scope: '/EphedrineWeb/VM/HLXM/' });
+                    await navigator.serviceWorker.register('./sw.js', { scope: '/EphedrineWeb/VM/HLXM/' });
                 };
                 //Initialize Install Panel
                 window.installParts = {};
@@ -499,6 +588,7 @@
                                 console.log("Another VBox Version Found.");
                                 installParts.vbox.querySelector(".installStatus").innerText = "已安装，但版本不受支持";
                             }
+                            addInstall("vbox");
                             break;
                         };
                         case 80:
@@ -509,7 +599,7 @@
                         }
                     }
                 };
-                detectVBox();
+                await detectVBox();
                 installParts.vbox.querySelector("[function*=\"download\"]").onclick = async () => {
                     if (window.currentInstall == "vbox") {
                         return false;
@@ -520,10 +610,11 @@
                         installParts.vbox.querySelector(".installProgress").style.width = percent + "%";
                         installParts.vbox.querySelector(".installStatus").innerText = "正在下载：" + percent + "%";
                     };
+                    installParts.vbox.querySelector(".installStatus").innerText = "正在安装";
                     let install = await Ephedrine.Actions.Install.run("https://download.virtualbox.org/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe", "vbox.exe", true, "--silent --reinstall --ignore-reboot --msiparams REBOOT=\"ReallySuppress\" REBOOTPROMPT=\"ReallySuppress\" MSIRESTARTMANAGERCONTROL=\"DisableShutdown\"");
                     switch (install.code) {
                         case 16: {
-                            installParts.vbox.querySelector(".installStatus").innerText = "安装完成，建议重启电脑";
+                            installParts.vbox.querySelector(".installStatus").innerText = "安装完成，请重启电脑后继续";
                             installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg";
                             break;
                         };
@@ -564,10 +655,18 @@
                 //Image Install
                 let imagepath = localStorage.ImageLocation;
                 if (imagepath) {
-                    installParts.image.querySelector(".installStatus").innerText = "已安装，版本：" + localStorage.ImageVersion;
-                    installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                    let imagefiles = await Ephedrine.Actions.List(imagepath);
+                    console.log(imagefiles);
+                    if (imagefiles.result.find(file => { return file.Name == "HLXM_WINXP.vdi" })) {
+                        installParts.image.querySelector(".installStatus").innerText = "已安装，版本：" + localStorage.ImageVersion;
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                        addInstall("image");
+                    } else {
+                        installParts.image.querySelector(".installStatus").innerText = "安装记录所在目录无游戏镜像";
+                    }
                 } else {
                     installParts.image.querySelector(".installStatus").innerText = "未安装或未找到";
+                    installParts.image.querySelector("[function*=\"uninstall\"]").style.display = "none";
                 };
                 installParts.image.querySelector("[function*=\"locate\"]").onclick = async () => {
                     let image = await Ephedrine.Actions.Select(false);
@@ -588,10 +687,11 @@
                         let installPath = await Ephedrine.Actions.Select(true);
                         installParts.image.querySelector(".installStatus").innerText = "正在解压，请允许插件安装";
                         await Ephedrine.Actions.Plugin("7Zip", "7za.exe", "x HLXM_WINXP.7z -y -o" + installPath.result, false, false)
-                        localStorage.ImageLocation = installPath.result + "\\HLXM_WINXP\\HLXM_WINXP.vdi";
+                        localStorage.ImageLocation = installPath.result + "\\HLXM_WINXP";
                         await sleep(5000);
                         installParts.image.querySelector(".installStatus").innerText = "安装完成";
-                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg";
+                        addInstall("image");
                     }
                     if (window.currentInstall == "image") {
                         return false;
@@ -649,6 +749,18 @@
                         delete window.currentInstall;
                         return false;
                     }
+                };
+                installParts.image.querySelector("[function*=\"uninstall\"]").onclick = async () => {
+                    if (confirm("卸载镜像会丢失所有存档数据并无法游玩，要继续吗？") && confirm("请再次确认，继续卸载将清除所有存档且无法恢复，真的要继续吗？")) {
+                        installParts.image.querySelector(".installStatus").innerText = "卸载中";
+                        installParts.image.querySelector("[function*=\"uninstall\"]").src = "../../icon/loading.svg";
+                        await Ephedrine.Actions.Delete(localStorage.ImageLocation + "\\HLXM_WINXP.vbox");
+                        await Ephedrine.Actions.Delete(localStorage.ImageLocation + "\\HLXM_WINXP.vbox-prev");
+                        await Ephedrine.Actions.Delete(localStorage.ImageLocation + "\\HLXM_WINXP.vdi");
+                        installParts.image.querySelector(".installStatus").innerText = "已卸载";
+                        installParts.image.querySelector("[function*=\"uninstall\"]").src = "../../icon/uninstall.svg";
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/download.svg";
+                    };
                 };
             } else {
                 document.body.innerHTML = "";
