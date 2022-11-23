@@ -673,7 +673,7 @@
                     console.log(image.result);
                     if (image.result.endsWith("HLXM_WINXP.vdi")) {
                         localStorage.ImageVersion = prompt("请输入镜像版本号");
-                        localStorage.ImageLocation = image.result;
+                        localStorage.ImageLocation = image.result.replace("\\HLXM_WINXP.vdi", "");
                         installParts.image.querySelector(".installStatus").innerText = "已记录镜像安装路径";
                         installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
                     } else {
