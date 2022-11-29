@@ -463,6 +463,11 @@
             <input type="checkbox" onclick="toggle(this,event)" key="autoStart" />
             <div data-off="禁用" data-on="启用"></div>
         </label>
+        <p class="setItem">下载加速（Cloudflare Proxy）</p>
+        <label class="toggle">
+            <input type="checkbox" onclick="toggle(this,event)" key="dlProxy" />
+            <div data-off="禁用" data-on="启用"></div>
+        </label>
         <p class="setItem">关闭广告显示</p>
         <label class="toggle">
             <input disabled type="checkbox" onclick="toggle(this,event)" key="disableAds" />
@@ -478,12 +483,12 @@
     </div>
     <div id="agreePage" class="page">
         <span>
-            更新于2022年11月22日<br>
+            更新于2022年11月29日<br>
             你可以做的事情：随意使用/修改/分发本启动器<br>
             你不可以做的事情：在分发本启动器时收费<br>
             琴梨梨的责任：无<br>
             需要的权限：存储空间，网络连接，安装程序<br>
-            收集的数据：由谷歌广告收集的广告相关数据
+            收集的数据：由谷歌广告收集的广告相关数据，由琴梨梨收集的性能统计数据和网络信息
         </span>
         <br>
         <button style="position:absolute;right:10px;bottom:10px;" onclick="agree()">同意</button>
@@ -558,7 +563,7 @@
                 };
                 if (localStorage.autoStart == "true") {
                     document.getElementById("launchBtn").click();
-                }
+                };
             }
         };
         (async () => {
@@ -727,6 +732,10 @@
                             installParts.image.querySelector(".installProgress").style.width = percent + "%";
                             installParts.image.querySelector(".installStatus").innerText = "版本" + version.latest.image.version + "正在下载：" + percent + "%";
                         };
+                        if (localStorage.dlProxy == "true") {
+                            version.latest.image.url = "https://ghcdn.qinlili.bid/" + version.latest.image.url;
+                        };
+                        console.loh(version.latest.image.url);
                         let install = await Ephedrine.Actions.Install.save(version.latest.image.url, "HLXM_WINXP.7z");
                         installParts.image.querySelector(".installStatus").innerText = "正在校验镜像完整性";
                         let hash = await Ephedrine.Actions.Verify("SHA256", "HLXM_WINXP.7z");
