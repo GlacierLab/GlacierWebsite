@@ -735,7 +735,7 @@
                         if (localStorage.dlProxy == "true") {
                             version.latest.image.url = "https://ghcdn.qinlili.bid/" + version.latest.image.url;
                         };
-                        console.loh(version.latest.image.url);
+                        console.log(version.latest.image.url);
                         let install = await Ephedrine.Actions.Install.save(version.latest.image.url, "HLXM_WINXP.7z");
                         installParts.image.querySelector(".installStatus").innerText = "正在校验镜像完整性";
                         let hash = await Ephedrine.Actions.Verify("SHA256", "HLXM_WINXP.7z");
