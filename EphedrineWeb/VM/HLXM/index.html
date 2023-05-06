@@ -552,7 +552,7 @@
                         document.getElementById("launchIcon").src = "../../icon/game.svg";
                         document.getElementById("launchBtn").innerText = "启动游戏";
                     }, 2000);
-                    await Ephedrine.Actions.Run(localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe", localStorage.ImageLocation + "\\HLXM_WINXP.vbox");
+                    await Ephedrine.Actions.Run(localStorage.VBoxLocation ? localStorage.VBoxLocation : "C:\\Program Files\\Oracle\\VirtualBox\\VirtualBox.exe", "\"" + localStorage.ImageLocation + "\\HLXM_WINXP.vbox\"");
                     if (!localStorage.successStart) {
                         let success = confirm("游戏启动成功了吗？");
                         if (success) {
@@ -652,7 +652,8 @@
                     if (exe.result.endsWith("VirtualBox.exe")) {
                         localStorage.VBoxLocation = exe.result;
                         installParts.vbox.querySelector(".installStatus").innerText = "已记录Virtual Box安装路径";
-                        installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                        installParts.vbox.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg";
+                        addInstall("vbox");
                     } else {
                         installParts.vbox.querySelector(".installStatus").innerText = "你选择的不是VirtualBox.exe";
                     }
@@ -680,7 +681,8 @@
                         localStorage.ImageVersion = prompt("请输入镜像版本号");
                         localStorage.ImageLocation = image.result.replace("\\HLXM_WINXP.vdi", "");
                         installParts.image.querySelector(".installStatus").innerText = "已记录镜像安装路径";
-                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg"
+                        installParts.image.querySelector("[function*=\"download\"]").src = "../../icon/repair.svg";
+                        addInstall("image");
                     } else {
                         installParts.image.querySelector(".installStatus").innerText = "你选择的不是HLXM_WINXP.vdi";
                     };
