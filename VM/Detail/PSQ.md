@@ -8,9 +8,9 @@
 
 |镜像作者|琴梨梨|
 |  ----  | ----  |
-|镜像版本|20230506|
-|镜像大小|490M  |
-|镜像SHA256|7c9f4bf87310c40a304b3b1ee3372098645fdc18b8f397045dd7fd8673e273f3|
+|镜像版本|20230508|
+|镜像大小|420M  |
+|镜像SHA256|ad74dda6196c761603a5b1f8bcb394c342e873a9a9ae2afced904cc23332a212|
 |游戏基线版本|[CD版](https://pan.baidu.com/s/18xaJny1jDwz9ICIE9ZIvrw?pwd=e9s2)|  
 |系统基线版本|Windows XP ZH-TW SP3|
 |虚拟机版本|[Virtual Box 5.2.44](https://download.virtualbox.org/virtualbox/5.2.44/)|
@@ -21,10 +21,14 @@
 
 <details><summary>历史版本</summary>
 
+#### 20230506
+|镜像作者|琴梨梨|
+|  ----  | ----  |
+|镜像大小|490M  |
+|镜像SHA256|7c9f4bf87310c40a304b3b1ee3372098645fdc18b8f397045dd7fd8673e273f3|
 #### 20230411
 |镜像作者|琴梨梨|
 |  ----  | ----  |
-|镜像版本|20230411|
 |镜像大小|524M  |
 |镜像SHA256|1ac535f14d445a8c4c1ec0bef469c356fd59a7a78646bca2bcfbaa8a5a4cf3b1|
 
@@ -37,6 +41,10 @@
 </details>
 
 ## 更新日志
+#### 20230508
+-存档分离  
+-极致优化体积  
+-优化启动速度和性能表现  
 #### 20230506
 -解决掉激活问题  
 -解决部分设备无法开启硬件加速问题  
@@ -51,10 +59,13 @@
 
 ## 镜像下载
 #### Github Release
-[精简版](https://github.com/GlacierLab/.github/releases/download/%E6%BF%80%E6%88%98%E8%B6%B3%E7%90%83%E5%AD%A6%E5%9B%AD/PSQ_WINXP_TINY_20230506.7z)   
+[精简版](https://github.com/GlacierLab/.github/releases/download/%E6%BF%80%E6%88%98%E8%B6%B3%E7%90%83%E5%AD%A6%E5%9B%AD/PSQ_WINXP_TINY_20230508.7z)   
 ### 安装助手开发中
 <details><summary>历史版本</summary>
 
+### 20230506
+#### Github Release
+[精简版](https://github.com/GlacierLab/.github/releases/download/%E6%BF%80%E6%88%98%E8%B6%B3%E7%90%83%E5%AD%A6%E5%9B%AD/PSQ_WINXP_TINY_20230506.7z)   
 ### 20230411
 #### Github Release  
 [精简版](https://github.com/GlacierLab/.github/releases/download/%E6%BF%80%E6%88%98%E8%B6%B3%E7%90%83%E5%AD%A6%E5%9B%AD/PSQ_WINXP_TINY_20230411.7z) 
