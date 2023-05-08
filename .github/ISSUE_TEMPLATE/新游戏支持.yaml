@@ -1,0 +1,77 @@
+name: 新游戏支持
+description: 许愿一个新的游戏
+title: "[新游戏]: "
+labels: ["newgame"]
+assignees:
+  - qinlili23333
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请填写下列信息
+  - type: dropdown
+    id: type
+    attributes:
+      label: 选择类别
+      options:
+        - 优化工具
+        - 平台移植
+        - 游戏插件
+        - 虚拟机整合包
+        - 其他（不确定就选这个）
+      multiple: false
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: 游戏名称
+      description: 提供游戏的官方完整名称，请不要使用俗名或缩写，也尽可能不要使用非官方译名。
+      placeholder: 例如：Apex Legends™
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: 游戏地址
+      description: 提供游戏的链接，请尽可能提供官方可信的下载链接，若官方链接已散失请提供一个可靠的第三方下载链接
+      placeholder: https://
+    validations:
+      required: true
+  - type: textarea
+    id: requirement
+    attributes:
+      label: 详细需求
+      description: 写下你所期望的需求，比如需要实现的功能，或是需要修复的地方等等
+      placeholder: 不限字数随便写
+      value: "我想要..."
+    validations:
+      required: true
+  - type: dropdown
+    id: system
+    attributes:
+      label: 你正在使用的设备
+      description: 选择你拥有的设备，不在选项中的设备暂不考虑支持
+      multiple: false
+      options:
+        - Windows 10/11 X64
+        - Windows 10/11 ARM64
+        - Linux Desktop X64
+        - Linux Desktop ARM64
+        - Android
+        - 其他拥有支持PWA的浏览器的设备
+    validations:
+      required: true
+  - type: textarea
+    id: talk
+    attributes:
+      label: 其他想写的
+      description: 随便写，别把斗罗大陆贴进来就行
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: 我同意...
+      description: 提交后本许愿会公开展示，本许愿不包含任何隐私信息
+      options:
+        - label: 我已确认
+          required: true
