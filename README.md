@@ -7,3 +7,10 @@
 ### [移植项目 Portation Projects](Port/README.md)  
 ### [游戏插件 Game Add-ons](Addon/README.md)  
 ### [虚拟机整合包 Virtual Machine Packs](VM/README.md)  
+
+
+
+<br><br><br><br>
+
+##### 本页评论区为许愿池，你可以在这里许愿需要处理的游戏，同一游戏许愿的人越多就越可能被优先处理！  
+##### Comment area on this page is wishing pool, you can wish the game you want to be optimized here, the more people who wish the same game, the more likely it will be processed first!
