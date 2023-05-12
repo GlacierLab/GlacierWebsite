@@ -11,11 +11,11 @@
         "image": {
             "key": "image",
             "name": "红楼续梦 XP镜像",
-            "vcode": 3,
-            "version": "20230420",
-            "url": "https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230420.7z",
-            "sha256": "9F9D45AA18D615D189414EFD7A00AEC1C3F4921A126AB4DABF0398D8DB2E7480",
-            "log": "进一步精简体积，修复弹激活问题"
+            "vcode": 4,
+            "version": "20230512",
+            "url": "https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230512.7z",
+            "sha256": "72B3C3746D8A08DFC2EF68B02F2923DFB9D3EBF51C30F6DD055190AB1AED3A49",
+            "log": "精简体积"
         }
     }
 }

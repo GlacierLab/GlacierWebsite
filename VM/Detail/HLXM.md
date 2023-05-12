@@ -8,9 +8,9 @@
 
 |镜像作者|琴梨梨|
 |  ----  | ----  |
-|镜像版本|20230420|
-|镜像大小|1.60G  |
-|镜像SHA256|9f9d45aa18d615d189414efd7a00aec1c3f4921a126ab4dabf0398d8db2e7480|
+|镜像版本|202305123|
+|镜像大小|776M  |
+|镜像SHA256|72b3c3746d8a08dfc2ef68b02f2923dfb9d3ebf51c30f6dd055190ab1aed3a49|
 |游戏基线版本|[CD版](https://www.ppxclub.com/708783-1-1)|  
 |系统基线版本|Windows XP ZH-TW SP3|
 |虚拟机版本|[Virtual Box 5.2.44](https://download.virtualbox.org/virtualbox/5.2.44/)|
@@ -18,6 +18,12 @@
 
 
 <details><summary>历史版本</summary>
+
+#### 20230420
+|镜像作者|琴梨梨|
+|  ----  | ----  |
+|镜像大小|1.60G  |
+|镜像SHA256|9f9d45aa18d615d189414efd7a00aec1c3f4921a126ab4dabf0398d8db2e7480|  
 
 #### 20221121
 |镜像作者|琴梨梨|
@@ -34,6 +40,10 @@
 </details>
 
 ## 更新日志
+#### 20230512
+- 全新黑科技镜像压缩包仅776M  
+- 新增启动动画  
+- 启动速度优化  
 #### 20230420
 - 合并1.05更新补丁  
 - 存档分离  
@@ -44,10 +54,12 @@
 - 首个版本
 
 ## 镜像下载
-[Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230420.7z)   
+[Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230512.7z)   
 [Ephedrine安装助手](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_Installer.exe)`推荐！全自动一键安装！`
 <details><summary>历史版本</summary>
   
+#### 20230420
+[Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230420.7z)   
 #### 20221121
 [Github Release](https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20221121.7z)   
 #### 20220630
