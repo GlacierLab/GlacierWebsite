@@ -8,6 +8,7 @@
 [且听琴语GR Grobda Remix](https://github.com/GlacierLab/GrobdaRemixOptimize)  
 [Song of Memories](https://github.com/GlacierLab/Som-resolution-fix)  
 [FuzeCleaner - R6S清理器 Rainbow Six:Siege Cleaner](https://github.com/GlacierLab/FuzeCleaner)  
+[Super Hexagon](https://github.com/GlacierLab/SuperHexagonOptimize)  
 
 
 
@@ -17,9 +18,7 @@
 <details><summary>
 
 ## 过时  
-
 </summary>
 
-[Super Hexagon](https://github.com/GlacierLab/SuperHexagonOptimize)  
 
 </details>
