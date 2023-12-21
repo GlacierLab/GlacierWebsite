@@ -12,9 +12,9 @@
             "key": "image",
             "name": "红楼续梦 XP镜像",
             "vcode": 4,
-            "version": "20230512",
-            "url": "https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_20230512.7z",
-            "sha256": "72B3C3746D8A08DFC2EF68B02F2923DFB9D3EBF51C30F6DD055190AB1AED3A49",
+            "version": "20231221",
+            "url": "https://github.com/GlacierLab/.github/releases/download/%E7%BA%A2%E6%A5%BC%E7%BB%AD%E6%A2%A6%E4%BA%AC%E5%8D%8E%E9%A3%8E%E4%BA%91/HLXM_WINXP_2021221.7z",
+            "sha256": "1EA011E40EEE47C36A88B2E0DA46343BFC43AD0F358C685C7EAD4CDA806882F4",
             "log": "精简体积"
         }
     }
