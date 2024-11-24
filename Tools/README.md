@@ -1,4 +1,4 @@
-# 优化工具 Optimize Tools  
+# 优化工具和补丁 Optimize Tools & Patches  
 ##### 请善用查找工具。Use Find to quick access.  
 
 ## Steam  
@@ -9,6 +9,7 @@
 [Song of Memories](https://github.com/GlacierLab/Som-resolution-fix)  
 [FuzeCleaner - R6S清理器 Rainbow Six:Siege Cleaner](https://github.com/GlacierLab/FuzeCleaner)  
 [Super Hexagon](https://github.com/GlacierLab/SuperHexagonOptimize)  
+[战地3UI修复 Battlefield 3 UI Fix](https://github.com/GlacierLab/bf3_fix)  
 
 ## itch.io
 [Mysterious Island Remastered 服务器模拟/Server Emulator](https://github.com/GlacierLab/MIRSE)  
