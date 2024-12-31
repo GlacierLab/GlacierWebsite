@@ -4,7 +4,7 @@
 <br>
 
 ##### [`了解全新的云酱桌面端 Introducing brand new Kumo Desktop`](https://github.com/GlacierLab/KumoDesktop)  
-### [聚能环 PowerRing](https://github.com/GlacierLab/PowerRing)  $${\color{red}提升高达30\\%的笔记本游戏性能！}$$  
+### [聚能环 PowerRing](https://github.com/GlacierLab/PowerRing)  提升高达30%的笔记本游戏性能！  
 ### [云酱游戏导航 Kumo Navigate](https://kumo.qinlili.bid)  
 ### [优化工具和补丁 Optimize Tools & Patches](Tools/README.md)  
 ### [移植项目 Portation Projects](Port/README.md)  
