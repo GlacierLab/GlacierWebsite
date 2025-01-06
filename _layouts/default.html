@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: " en-US" }}">
+<html lang="{{ page.lang | default: site.lang | default: " zh-CN" }}">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="theme-color" content="#DFAEFF">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }}</title>
     <style type="text/css">
         ::-webkit-scrollbar {
             height: 12px;
@@ -39,6 +40,68 @@
             max-width: 1012px;
             margin-right: auto !important;
             margin-left: auto !important;
+            text-align: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overflow-y: overlay;
+        }
+
+        .navbar {
+            height: 32px;
+            width: 100%;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .navicon {
+            cursor: pointer;
+            border-radius: 16px;
+            display: inline;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            transition: all 0.3s;
+            background-color: transparent;
+
+            &:hover {
+                border-radius: 0px;
+                background-color: rgba(0, 0, 0, 0.15);
+            }
+
+            &:active {
+                border-radius: 0px;
+                background-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .navicon-img {
+            width: 100%;
+            height: 100%
+        }
+
+        #loading {
+            display: inline;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+        }
+
+        #download {
+            display: none;
+            height: 48px;
+            width: 160px;
+            padding: 8px;
+            background-color: greenyellow;
+            border-radius: 4px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+            justify-content: space-between;
+        }
+
+        .content {
+            padding-left: 8px;
+            padding-left: 8px;
         }
     </style>
 
@@ -48,31 +111,76 @@
 </head>
 
 <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-        {{ content }}
+    <div class="navbar">
+        <div style="display:flex;">
+            <div class="navicon" id="back" style="display:none;" aria-label="返回 Back">
+                <img class="navicon-img" src="/static/img/icon/left.svg">
+            </div>
+            <a class="navicon" href="/" title="主页 Homepage">
+                <img class="navicon-img" src="/static/img/icon/home.svg">
+            </a>
+            <a class="navicon" href="https://github.com/qinlili23333/PDFonty" target="_blank" title="Github">
+                <img class="navicon-img" src="/static/img/icon/github.svg">
+            </a>
+            <div class="navicon" id="share" style="display:none;" aria-label="分享 Share">
+                <img class="navicon-img" src="/static/img/icon/share.svg">
+            </div>
+        </div>
+        <H3 id="status" style="line-height: 32px;text-overflow: ellipsis;flex-shrink: 0;">正在获取版本信息...</H3>
+        <div style="display:flex;">
+            <img id="loading" src="/static/img/loading.svg">
+            <a class="navicon" style="width:80px;" href="https://qinlili.bid" title="琴梨梨">
+                <img class="navicon-img" src="/static/img/logo.png">
+            </a>
+        </div>
     </div>
-    <h4>广告让我们能保持免费 Ads can keep everything we produced free.<br>评论区在广告下方 Discuss area is below the ads.</h4>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1806614386308377"
-        crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-1806614386308377"
-        data-ad-slot="6555030757"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <div id="disqus_thread"></div>
-    <script>
-        (function () {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://qinlili-1.disqus.com/embed.js';
-            s.async = true;
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <div style="display:flex;flex-direction: row;justify-content:space-around;width:100%;">
-        <a href="https://qinlili.bid" target="_blank">琴梨梨</a>
-        <p>|</p>
-        <a href="https://icp.gov.moe/?keyword=20225033" target="_blank">萌ICP备20225033号</a>
+    <div class="content">
+        <div class="container-lg px-3 my-5 markdown-body">
+            {{ content }}
+        </div>
+        <h4>广告让我们能保持免费 Ads can keep everything we produced free.<br>评论区在广告下方 Discuss area is below the ads.</h4>
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1806614386308377"
+            crossorigin="anonymous"></script>
+        <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed"
+            data-ad-client="ca-pub-1806614386308377" data-ad-slot="6555030757"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <div id="disqus_thread"></div>
+        <script>
+            if (document.referrer.indexOf(location.origin) == 0) {
+                document.getElementById("back").style.display = "inline";
+                document.getElementById("back").addEventListener("click", () => {
+                    history.back();
+                });
+            }
+            if (navigator.share) {
+                document.getElementById("share").style.display = "inline";
+                document.getElementById("share").addEventListener("click", async () => {
+                    navigator.share({
+                        title: document.title,
+                        text: document.body.innerText.substring(0, 100) + "...",
+                        url: location.href
+                    });
+                });
+            }
+            (function () {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://qinlili-1.disqus.com/embed.js';
+                s.async = true;
+                s.setAttribute('data-timestamp', +new Date());
+                s.onerror = () => {
+                    document.getElementById("disqus_thread").innerHTML = "<H4>评论区加载失败</H4>";
+                }
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <div style="display:flex;flex-direction: row;justify-content:space-around;width:100%;">
+            <a href="https://qinlili.bid" target="_blank">琴梨梨</a>
+            <p>|</p>
+            <a href="https://icp.gov.moe/?keyword=20225033" target="_blank">萌ICP备20225033号</a>
+        </div>
     </div>
 </body>
 
