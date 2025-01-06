@@ -37,7 +37,6 @@
         }
 
         body {
-            max-width: 1012px;
             margin-right: auto !important;
             margin-left: auto !important;
             text-align: center;
@@ -100,8 +99,7 @@
         }
 
         .content {
-            padding-left: 8px;
-            padding-left: 8px;
+            text-align: left;
         }
     </style>
 
@@ -126,9 +124,8 @@
                 <img class="navicon-img" src="/static/img/icon/share.svg">
             </div>
         </div>
-        <H3 id="status" style="line-height: 32px;text-overflow: ellipsis;flex-shrink: 0;">正在获取版本信息...</H3>
+        <H3 id="status" style="line-height: 32px;text-overflow: ellipsis;flex-shrink: 0;">{{ page.title }}</H3>
         <div style="display:flex;">
-            <img id="loading" src="/static/img/loading.svg">
             <a class="navicon" style="width:80px;" href="https://qinlili.bid" title="琴梨梨">
                 <img class="navicon-img" src="/static/img/logo.png">
             </a>
