@@ -3,7 +3,7 @@
 ##### 由琴梨梨建立，专注游戏优化和移植。 Set up by Qinlili, focus on optimization and portation.  
 <br>
 
-##### [`了解全新的云酱桌面端 Introducing brand new Kumo Desktop`](https://github.com/GlacierLab/KumoDesktop)  
+### [See our comprehensive guide about DXVK on Windows](https://attic.qinlili.bid/2025/01/master-of-dxvk-usage-on-windows.html)  
 ### [聚能环 PowerRing](https://github.com/GlacierLab/PowerRing)  提升高达30%的笔记本游戏性能！  
 ### [云酱游戏导航 Kumo Navigate](https://kumo.qinlili.bid)  
 ### [优化工具和补丁 Optimize Tools & Patches](Tools/README.md)  
