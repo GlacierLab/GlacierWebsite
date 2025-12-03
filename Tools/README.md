@@ -9,6 +9,7 @@
 [FuzeCleaner - R6S清理器 Rainbow Six:Siege Cleaner](https://github.com/GlacierLab/FuzeCleaner)  
 [Super Hexagon](https://github.com/GlacierLab/SuperHexagonOptimize)  
 [战地3UI修复 Battlefield 3 UI Fix](https://github.com/GlacierLab/bf3_fix)  
+[荣誉勋章战士UI修复 Medal of Honor: Warfighter UI Fix](https://github.com/GlacierLab/MOHW_fix)  
 [Mysterious Island Remastered 服务器模拟/Server Emulator](https://github.com/GlacierLab/MIRSE)  
 
 ## 预制整合补丁 Prepacked Patches
