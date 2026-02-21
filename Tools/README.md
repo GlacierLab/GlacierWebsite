@@ -11,6 +11,7 @@
 [战地3UI修复 Battlefield 3 UI Fix](https://github.com/GlacierLab/bf3_fix)  
 [荣誉勋章战士UI修复 Medal of Honor: Warfighter UI Fix](https://github.com/GlacierLab/MOHW_fix)  
 [Mysterious Island Remastered 服务器模拟/Server Emulator](https://github.com/GlacierLab/MIRSE)  
+[汽车总动员:快如闪电 UI修复 Cars: Fast as Lightning UI Fix](https://github.com/GlacierLab/CarsFAL_UHD_Fix)  
 
 ## 预制整合补丁 Prepacked Patches
 [Castle X64&DXVK Patch](https://community.pcgamingwiki.com/files/file/2449-castle-x64dxvk-patch/)  
